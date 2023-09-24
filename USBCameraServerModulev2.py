@@ -85,8 +85,8 @@ class ObjectDetection(Module):
 
     def message_listener(self, message):
         # Check if a CUDA-capable GPU is available, if no CUDA-capable GPU skip object detection
+        self.start_time = time.time()
         if torch.cuda.is_available():
-            self.start_time = time.time()
             # Detect objects in the image using Yolov8 on the GPU
             results = self.model(message["data"], conf=self.thres_hold, device=0, half=True, classes=self.classes, verbose=False)[0]
             
@@ -98,11 +98,11 @@ class ObjectDetection(Module):
                 # Draw bounding boxes around detected objects on the BGR image
                 cv.rectangle(message["data"], (int(x1), int(y1)), (int(x2), int(y2)), (0, 255, 0), 5)
 
-                # Calculate FPS
-                self.end_time = time.time()
-                tt = self.end_time - self.start_time
-                self.fps = 0.9*self.fps + 0.1*(1/tt)
-                cv.putText(message["data"], "FPS:" + str(int(self.fps)),(30,60),cv.FONT_HERSHEY_SIMPLEX, 1.5, (0,255,0), 3)
+        # Calculate FPS
+        self.end_time = time.time()
+        tt = self.end_time - self.start_time
+        self.fps = 0.9*self.fps + 0.1*(1/tt)
+        cv.putText(message["data"], "FPS:" + str(int(self.fps)),(30,60),cv.FONT_HERSHEY_SIMPLEX, 1.5, (0,255,0), 3)
 
         # Publish frame
         pub.sendMessage("image", message = {"data": message["data"]})
@@ -124,4 +124,4 @@ if __name__ == "__main__":
 
     USBCameraHandler.start(120)
     ObjectDetection.start(120)
-    USBCameraDisplay.start(1)
+    USBCameraDisplay.start(60)
