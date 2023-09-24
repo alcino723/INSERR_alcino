@@ -29,44 +29,38 @@ class USBCameraHandler(Module):
         self.connected = True
         print(f"USB Connected from PORT: {self.PORT}")
     
-     # receives camera frame and publish it out
+    # receives camera frame and publish it out
     def run(self):
         while True:
             if self.connected:
-                try:
-                    # Receive the frame size from the client
-                    frame_size_data = self.conn.recv(struct.calcsize('<L'))
-                    if frame_size_data:
-                        frame_size = struct.unpack('<L', frame_size_data)[0]
+                # Receive the frame size from the client
+                frame_size_data = self.conn.recv(struct.calcsize('<L'))
+                if frame_size_data:
+                    frame_size = struct.unpack('<L', frame_size_data)[0]
 
-                        # Receive the frame data from the client
-                        frame_data = b''
-                        while len(frame_data) < frame_size:
-                            data = self.conn.recv(frame_size - len(frame_data))
-                            if not data:
-                                break
-                            frame_data += data
+                    # Receive the frame data from the client
+                    frame_data = b''
+                    while len(frame_data) < frame_size:
+                        data = self.conn.recv(frame_size - len(frame_data))
+                        if not data:
+                            break
+                        frame_data += data
 
-                        # Decode the MJPEG data and convert it to a BGR image
-                        frame = cv.imdecode(np.frombuffer(frame_data, dtype=np.uint8), cv.IMREAD_COLOR)
+                    # Decode the MJPEG data and convert it to a BGR image
+                    frame = cv.imdecode(np.frombuffer(frame_data, dtype=np.uint8), cv.IMREAD_COLOR)
 
-                        # Publish Decode Frame
-                        pub.sendMessage("usbcam", message = {"data": frame})
+                    # Publish Decoded Frame
+                    pub.sendMessage("usbcam", message = {"data": frame})
 
-                    else:
-                        # If self.conn.recv is empty string (Client Crashes)
-                        self.connected = False
-                        self.conn.close()
-                        self.socket.close()
-                        print(f"USB Disconnected from PORT:{self.PORT}")
-                        cv.destroyAllWindows()
-
-                except socket.error:
+                else:
+                    # If self.conn.recv is empty string (Client Crashes)
                     self.connected = False
                     self.conn.close()
                     self.socket.close()
                     print(f"USB Disconnected from PORT:{self.PORT}")
-                    
+                    pub.sendMessage("socket.connection", message = {"data": 0})
+                    cv.destroyAllWindows()
+     
             else:
                 self.wait_for_client()
 
