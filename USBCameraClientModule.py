@@ -25,7 +25,6 @@ class USBCamera(Module):
         # self.HOST = "169.254.196.165"  # Isaac's Laptop
         # self.HOST = '169.254.104.53' # Silver Laptop 
         self.PORT = 8080
-        self.connected = False
         self.connect_to_server()
 
     def connect_to_server(self):
@@ -35,30 +34,25 @@ class USBCamera(Module):
                 self.socket.connect((self.HOST, self.PORT))
 
                 print(f"Connected to USB server: {self.HOST}, PORT: {self.PORT}")
-                self.connected = True
                 break
             except ConnectionRefusedError:
                 print('No USB server connection established. Retrying in 1 seconds...')
                 time.sleep(1)
-        return self.socket
-    
-
+        
     def run(self):
         # Read the frame
         ret, image = self.cam.read()
         # Convert the frame to a byte array
         frame_data = image.tobytes()
         
-        if self.connected:
-            try:
-                # Send the frame data through the socket
-                self.socket.sendall(struct.pack('<L', len(frame_data)) + frame_data)
-                # print(f"frame data: {frame_data}, frame")
-            except (BrokenPipeError, ConnectionResetError):
-                print('USB Server connection lost. Reconnecting...')
-                self.socket.close()
-                self.connected = False
-                self.socket = self.connect_to_server()
+        try:
+            # Send the frame data through the socket
+            self.socket.sendall(struct.pack('<L', len(frame_data)) + frame_data)
+            # print(f"frame data: {frame_data}, frame")
+        except (BrokenPipeError, ConnectionResetError):
+            print('USB Server connection lost. Reconnecting...')
+            self.socket.close()
+            self.connect_to_server()
 
 if __name__ == "__main__":
     USBCamera = USBCamera(0, 'MJPG', 1920, 1080, 30)
