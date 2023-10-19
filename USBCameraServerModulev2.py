@@ -58,7 +58,6 @@ class USBCameraHandler(Module):
                     self.conn.close()
                     self.socket.close()
                     print(f"USB Disconnected from PORT:{self.PORT}")
-                    pub.sendMessage("socket.connection", message = {"data": 0})
                     cv.destroyAllWindows()
      
             else:
@@ -118,4 +117,4 @@ if __name__ == "__main__":
 
     USBCameraHandler.start(120)
     ObjectDetection.start(120)
-    USBCameraDisplay.start(60)
+    USBCameraDisplay.start(120)
