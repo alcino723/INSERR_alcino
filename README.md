@@ -5,7 +5,6 @@ https://wiki.ros.org/noetic/Installation/Ubuntu
 
 ### Setup Environment
 1) gedit ~/.bashrc
-## Add in 
 2) source /opt/ros/noetic/setup.bash
 
 ### Setting up ROS workspace
@@ -19,9 +18,8 @@ https://wiki.ros.org/noetic/Installation/Ubuntu
 ## Compile Workspace (Be sure not in src folder)
 3) ~/catkin_ws$ catkin_make
 
+## Source setup.bash
 4) gedit ~/.bashrc
-   
-## Add in the following to bashrc
 5) source ~/catkin_ws/devel/setup.bash
 
 ### Create a ROS package
