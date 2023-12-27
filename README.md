@@ -27,3 +27,8 @@ mkdir catkin_ws
 
 # Build the package
 ~/catkin_ws$ catkin_make
+
+# Create a folder to host ROS node files and write ROS node in that file.
+1) ~/catkin_ws/src/YOUR_PACKAGE_NAME$ mkdir scripts
+2) ~/catkin_ws/src/YOUR_PACKAGE_NAME/scripts$ touch YOUR_NODE_FILE.py
+3) ~/catkin_ws/src/YOUR_PACKAGE_NAME/scripts$ chmod +x YOUR_NODE_FILE.py
