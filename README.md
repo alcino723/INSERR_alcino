@@ -19,11 +19,11 @@ mkdir catkin_ws
 ~/catkin_ws$ catkin_make
 
 ## 4. Source setup.bash
-gedit ~/.bashrc
-source ~/catkin_ws/devel/setup.bash
+1) gedit ~/.bashrc
+2) source ~/catkin_ws/devel/setup.bash
 
 # Create a ROS package
-1) ~/catkin_ws/src$ catkin_create_pkg YOUR_PACKAGE_NAME rospy
+~/catkin_ws/src$ catkin_create_pkg YOUR_PACKAGE_NAME rospy
 
 # Build the package
-1) ~/catkin_ws$ catkin_make
+~/catkin_ws$ catkin_make
