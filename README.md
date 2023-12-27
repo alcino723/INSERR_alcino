@@ -9,16 +9,16 @@ https://wiki.ros.org/noetic/Installation/Ubuntu
 
 ## Setting up ROS workspace
 
-Make ROS Work space
+# Make ROS Work space
 1) mkdir catkin_ws
 
-Make ROS src folder
+# Make ROS src folder
 2) ~/catkin_ws$ mkdir src
 
-Compile Workspace (Be sure not in src folder)
+# Compile Workspace (Be sure not in src folder)
 3) ~/catkin_ws$ catkin_make
 
-Source setup.bash
+# Source setup.bash
 4) gedit ~/.bashrc
 5) source ~/catkin_ws/devel/setup.bash
 
