@@ -32,3 +32,13 @@ mkdir catkin_ws
 1) ~/catkin_ws/src/YOUR_PACKAGE_NAME$ mkdir scripts
 2) ~/catkin_ws/src/YOUR_PACKAGE_NAME/scripts$ touch YOUR_NODE_FILE.py
 3) ~/catkin_ws/src/YOUR_PACKAGE_NAME/scripts$ chmod +x YOUR_NODE_FILE.py
+
+# Trouble Shoot
+## Unbuntu Network Reset
+1) sudo dhclient -r NET_WORK_INTERFACE
+2) sudo dhclient NET_WORK_INTERFACE
+
+## /usr/bin/env: ‘python3\r’: No such file or directory
+1) sudo apt install dos2unix
+2) dos2unix /PATH/TO/YOUR/WINDOWS_FILE (windows -> linux)
+   unix2dos /PATH/TO/YOUR/LINUX_FILE (linux -> window)
