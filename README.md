@@ -41,4 +41,4 @@ mkdir catkin_ws
 ## /usr/bin/env: ‘python3\r’: No such file or directory
 1) sudo apt install dos2unix
 2) dos2unix /PATH/TO/YOUR/WINDOWS_FILE (windows -> linux)
-   unix2dos /PATH/TO/YOUR/LINUX_FILE (linux -> window)
+3) unix2dos /PATH/TO/YOUR/LINUX_FILE (linux -> window)
