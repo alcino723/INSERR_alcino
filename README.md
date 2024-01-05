@@ -1,57 +1,152 @@
-# INSERR_alcino
+# INSERR_alcino Documentation
 
 # Installing up ROS noetic:
 https://wiki.ros.org/noetic/Installation/Ubuntu
 
 # Setup Environment
-1) gedit ~/.bashrc
-2) source /opt/ros/noetic/setup.bash
+```bash
+gedit ~/.bashrc
+```
+Add
+```bash
+source /opt/ros/noetic/setup.bash
+```
+you can close all the current terminals and open new ones<br>
+or source ```bashrc``` in all your current terminal
+```bash
+source ~/.bashrc
+```
 
 # Setting up ROS workspace
 
 ## 1. Create ROS Work space
+```bash
 mkdir catkin_ws
+```
 
 ## 2. Make ROS src folder
-~/catkin_ws$ mkdir src
+Navigate to ```~/catkin_ws```
+```bash
+cd ~/catkin_ws
+```
+Create ```/src``` Folder
+```bash
+mkdir src
+```
 
-## 3. Compile Workspace (Be sure not in src folder)
-~/catkin_ws$ catkin_make
+## 3. Compile Workspace
+Navigate to ```~/catkin_ws```
+```bash
+cd ~/catkin_ws
+```
+Complile workspace
+```bash
+catkin_make
+```
 
 ## 4. Source setup.bash
-1) gedit ~/.bashrc
-2) source ~/catkin_ws/devel/setup.bash
+```bash
+gedit ~/.bashrc
+```
+Add
+```bash
+source ~/catkin_ws/devel/setup.bash
+```
 
 # Create a ROS package
-~/catkin_ws/src$ catkin_create_pkg YOUR_PACKAGE_NAME rospy
+Navigate to ```~/catkin_ws/src```
+```bash
+cd ~/catkin_ws/src
+```
+Create a ROS package (replace ```YOUR_PACKAGE_NAME``` with your own package name)
+```bash
+catkin_create_pkg YOUR_PACKAGE_NAME rospy
+```
 
 # Build the package
-~/catkin_ws$ catkin_make
+Navigate to ```~/catkin_ws```
+```bash
+cd ~/catkin_ws
+```
+Build the package
+```bash
+catkin_make
+```
 
-# Create a folder to host ROS node files and write ROS node in that file.
-1) ~/catkin_ws/src/YOUR_PACKAGE_NAME$ mkdir scripts
-2) ~/catkin_ws/src/YOUR_PACKAGE_NAME/scripts$ touch YOUR_NODE_FILE.py
-3) ~/catkin_ws/src/YOUR_PACKAGE_NAME/scripts$ chmod +x YOUR_NODE_FILE.py
+# Create a folder to host ROS node files
+Navigate to ```~/catkin_ws/src/YOUR_PACKAGE_NAME```
+```bash
+cd ~/catkin_ws/src/YOUR_PACKAGE_NAME
+```
+Create a folder to write your nodes in
+```bash
+mkdir scripts
+```
+# Create a ROS node file
+Navigate to ```~/catkin_ws/src/YOUR_PACKAGE_NAME/scripts```
+```bash
+cd ~/catkin_ws/src/YOUR_PACKAGE_NAME/scripts
+```
+Create Node file
+```bash
+touch YOUR_NODE_FILE.py
+```
+Make the node executable
+```bash
+chmod +x YOUR_NODE_FILE.py
+```
 
 # Trouble Shoot
 ## Unbuntu DHCP release and renew 
-1) sudo dhclient -r NET_WORK_INTERFACE
-2) sudo dhclient NET_WORK_INTERFACE
+Release All DHCP
+```bash
+sudo dhclient -r
+```
+Renew All DHCP
+```bash
+sudo dhclient 
+```
 
 ## Ubuntu DHCP network interfaces 
-1) cd /etc/netplan
-2) /etc/netplan$ touch 01-network-manager-all.yaml 
-3) sudo nano /etc/netplan/01-network-manager-all.yaml
-4) network:
-     version: 2
-     renderer: networkd
-     ethernets:
-       eth0:
-         dhcp4: true
-5) sudo netplan apply
-6) sudo reboot
+Navigate to ```/etc/netplan```
+```bash
+cd /etc/netplan
+```
+Create network manager file (may have to use sudo)
+```bash
+touch 01-network-manager-all.yaml
+```
+Edit ```01-network-manager-all.yaml```
+```bash
+sudo nano /etc/netplan/01-network-manager-all.yaml
+```
+Add
+```yaml
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    eth0:
+      dhcp4: true
+```
+Apply new setting
+```bash
+sudo netplan apply
+```
+Reboot
+```bash
+sudo reboot
+```
    
 ## /usr/bin/env: ‘python3\r’: No such file or directory
-1) sudo apt install dos2unix
-2) dos2unix /PATH/TO/YOUR/WINDOWS_FILE (windows -> linux)
-3) unix2dos /PATH/TO/YOUR/LINUX_FILE (linux -> window)
+### Solution : https://askubuntu.com/questions/896860/usr-bin-env-python3-r-no-such-file-or-directory <br>
+
+Install ```ddo2unix```
+```bash
+sudo apt install dos2unix
+```
+Convert files
+```bash
+dos2unix /PATH/YOUR_FILE
+```
+
