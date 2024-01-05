@@ -139,7 +139,7 @@ sudo reboot
 ```
    
 ## /usr/bin/env: ‘python3\r’: No such file or directory
-### Solution : https://askubuntu.com/questions/896860/usr-bin-env-python3-r-no-such-file-or-directory <br>
+Solution : https://askubuntu.com/questions/896860/usr-bin-env-python3-r-no-such-file-or-directory <br>
 
 Install ```ddo2unix```
 ```bash
