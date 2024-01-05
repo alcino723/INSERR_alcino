@@ -34,10 +34,23 @@ mkdir catkin_ws
 3) ~/catkin_ws/src/YOUR_PACKAGE_NAME/scripts$ chmod +x YOUR_NODE_FILE.py
 
 # Trouble Shoot
-## Unbuntu Network Reset
+## Unbuntu DHCP release and renew 
 1) sudo dhclient -r NET_WORK_INTERFACE
 2) sudo dhclient NET_WORK_INTERFACE
 
+## Ubuntu DHCP network interfaces 
+1) cd /etc/netplan
+2) /etc/netplan$ touch 01-network-manager-all.yaml 
+3) sudo nano /etc/netplan/01-network-manager-all.yaml
+4) network:
+     version: 2
+     renderer: networkd
+     ethernets:
+       eth0:
+         dhcp4: true
+5) sudo netplan apply
+6) sudo reboot
+   
 ## /usr/bin/env: ‘python3\r’: No such file or directory
 1) sudo apt install dos2unix
 2) dos2unix /PATH/TO/YOUR/WINDOWS_FILE (windows -> linux)
