@@ -112,9 +112,9 @@ Navigate to ```/etc/netplan```
 ```bash
 cd /etc/netplan
 ```
-Create network manager file (may have to use sudo)
+Create network manager file 
 ```bash
-touch 01-network-manager-all.yaml
+sudo touch 01-network-manager-all.yaml
 ```
 Edit ```01-network-manager-all.yaml```
 ```bash
@@ -133,7 +133,12 @@ Apply new setting
 ```bash
 sudo netplan apply
 ```
-Reboot
+Check IP
+```bash
+hostname -i
+```
+
+Reboot (If needed) 
 ```bash
 sudo reboot
 ```
@@ -141,7 +146,7 @@ sudo reboot
 ## /usr/bin/env: ‘python3\r’: No such file or directory
 Solution : https://askubuntu.com/questions/896860/usr-bin-env-python3-r-no-such-file-or-directory <br>
 
-Install ```ddo2unix```
+Install ```dos2unix```
 ```bash
 sudo apt install dos2unix
 ```
