@@ -107,7 +107,7 @@ Renew All DHCP
 sudo dhclient 
 ```
 
-## Ubuntu DHCP network interfaces 
+## Ubuntu DHCP not getting IP 
 Navigate to ```/etc/netplan```
 ```bash
 cd /etc/netplan
