@@ -95,6 +95,26 @@ Make the node executable
 ```bash
 chmod +x YOUR_NODE_FILE.py
 ```
+# Setting up ROS communication between machines
+1) Pick 1 machine to be ROS Master
+2) On Master Machine, Edit ```~/.bashrc``` file
+```bash
+sudo nano ~/.bashrc
+```
+3) On Master machine ```~/.bashrc``` file, Add
+```yaml
+export ROS_MASTER_URI=http://MASTER_URI:11311
+export ROS_IP=MASTER_IP
+```
+4) On Slave Machine, Edit ```~/.bashrc``` file
+```bash
+sudo nano ~/.bashrc
+```
+5) On Slave Machine ```~/.bashrc``` file, Add
+```yaml
+export ROS_MASTER_URI=http://MASTER_IP:11311
+export ROS_IP=SLAVE_IP
+```
 
 # Trouble Shoot
 ## Unbuntu DHCP release and renew 
