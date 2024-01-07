@@ -115,6 +115,10 @@ sudo nano ~/.bashrc
 export ROS_MASTER_URI=http://MASTER_IP:11311
 export ROS_IP=SLAVE_IP
 ```
+6) Source ```~/.bashrc``` for all the terminal in both Master and Slave
+```bash
+source ~/.bashrc
+```
 
 # Trouble Shoot
 ## Unbuntu DHCP release and renew 
