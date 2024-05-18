@@ -1,6 +1,6 @@
 # INSERR_alcino Documentation
 
-# Installing up ROS noetic:
+# Installing ROS noetic:
 https://wiki.ros.org/noetic/Installation/Ubuntu
 
 # Setup Environment
