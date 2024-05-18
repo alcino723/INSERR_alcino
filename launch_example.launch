@@ -1,0 +1,10 @@
+<launch>
+  <!-- Launch Node -->
+  <node pkg="YOUR_PACKAGE_NAME" type="NODE_FILE_NAME.py" name="NODE_NAME" output="screen">
+  </node>
+
+  <!-- Launch Rviz for Real Time Lidar Data Visualization-->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find rplidar_ros)/rviz/rplidar.rviz">
+  </node>
+
+</launch>
