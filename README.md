@@ -119,6 +119,27 @@ export ROS_IP=SLAVE_IP
 ```bash
 source ~/.bashrc
 ```
+# Setting up ROS launch
+Navigate to ```~/catkin_ws/src/YOUR_PACKAGE_NAME```
+```bash
+cd ~/catkin_ws/src/YOUR_PACKAGE_NAME/
+```
+Create launch folder
+```yaml
+mkdir launch
+```
+Create launch file
+```yaml
+touch LAUNCH_FILE.launch
+```
+Make launch file executable
+```yaml
+sudo chmod +x LAUNCH_FILE.launch
+```
+Start ROS using ```roslaunch```
+```yaml
+roslaunch YOUR_PACKAGE_NAME LAUNCH_FILE.launch
+```
 
 # Trouble Shoot
 ## Unbuntu DHCP release and renew 
