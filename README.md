@@ -128,6 +128,10 @@ Create launch folder
 ```yaml
 mkdir launch
 ```
+Navigate to ```~/catkin_ws/src/YOUR_PACKAGE_NAME/launch```
+```bash
+cd ~/catkin_ws/src/YOUR_PACKAGE_NAME/launch
+```
 Create launch file
 ```yaml
 touch LAUNCH_FILE.launch
