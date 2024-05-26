@@ -125,7 +125,7 @@ Navigate to ```~/catkin_ws/src/YOUR_PACKAGE_NAME```
 cd ~/catkin_ws/src/YOUR_PACKAGE_NAME/
 ```
 Create launch folder
-```yaml
+```bash
 mkdir launch
 ```
 Navigate to ```~/catkin_ws/src/YOUR_PACKAGE_NAME/launch```
@@ -133,15 +133,20 @@ Navigate to ```~/catkin_ws/src/YOUR_PACKAGE_NAME/launch```
 cd ~/catkin_ws/src/YOUR_PACKAGE_NAME/launch
 ```
 Create launch file
-```yaml
+```bash
 touch LAUNCH_FILE.launch
 ```
 Make launch file executable
-```yaml
+```bash
 sudo chmod +x LAUNCH_FILE.launch
 ```
+Compile Workspace
+```bash
+catkin_make
+```
+
 Start ROS using ```roslaunch```
-```yaml
+```bash
 roslaunch YOUR_PACKAGE_NAME LAUNCH_FILE.launch
 ```
 
